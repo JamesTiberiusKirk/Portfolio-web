@@ -11,7 +11,7 @@ export class AppComponent {
   hello_w;
 
   constructor(private api: BackendAPIService){
-    this.api.getTest().subscribe(data=>{
+    this.api.getCV().subscribe(data=>{
       console.log(data);
       this.hello_w = JSON.stringify(data);
     });

@@ -14,4 +14,9 @@ export class BackendAPIService {
     let url = "http://localhost:3000/hello";
     return this.http.get(url);
   }
+  getCV(){
+    let url = "http://localhost:3000/cv";
+    return this.http.get(url);
+
+  }
 }
