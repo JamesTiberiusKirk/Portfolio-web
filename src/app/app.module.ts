@@ -6,35 +6,45 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 // Material inports
 import {
   MatInputModule,
   MatButtonModule,
   MatSelectModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatFormFieldModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { MatCardModule } from '@angular/material/card';
 
 // Angular HTTP Import
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './pages/public/login-page/login-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    
     FormsModule,
+    ReactiveFormsModule,
+    
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+
     HttpClientModule,
-    MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

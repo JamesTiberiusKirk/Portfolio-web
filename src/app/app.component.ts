@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BackendAPIService } from './services/backendAPI/backend-api.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,12 +7,5 @@ import { BackendAPIService } from './services/backendAPI/backend-api.service'
 export class AppComponent {
   title = 'Portfolio';
 
-  hello_w;
-
-  constructor(private api: BackendAPIService){
-    this.api.getCV().subscribe(data=>{
-      console.log(data);
-      this.hello_w = JSON.stringify(data);
-    });
-  }
+  constructor(){ }
 }
