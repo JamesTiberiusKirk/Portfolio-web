@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  
+import { HttpClient } from '@angular/common/http';
+
+
+const ROOT_URL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +11,18 @@ export class BackendAPIService {
 
   constructor(
     private http: HttpClient
-    ) { }
+  ) { }
 
-  getTest(){
-    let url = "http://localhost:3000/hello";
-    return this.http.get(url);
+  getTest() {
+    return this.http.get(`${ROOT_URL}/hello`);
   }
-  getCV(){
-    let url = "http://localhost:3000/cv";
-    return this.http.get(url);
 
+  getCV() {
+    return this.http.get(`${ROOT_URL}/cv`);
+  }
+
+  login(username: string, password: string) {
+    let body = { username, password };
+    return this.http.post(`${ROOT_URL}/users/login`, body);
   }
 }
