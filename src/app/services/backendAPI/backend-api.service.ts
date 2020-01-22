@@ -23,6 +23,6 @@ export class BackendAPIService {
 
   login(username: string, password: string) {
     let body = { username, password };
-    return this.http.post(`${ROOT_URL}/users/login`, body);
+    return this.http.post(`${ROOT_URL}/users/login`, body, {observe:'response'});
   }
 }

@@ -24,7 +24,10 @@ export class LoginPageComponent implements OnInit {
 
   onBtnLoginClick() {
     console.log(this.loginForm.value.username + ' | ' + this.loginForm.value.password);
-    this.auth.login(this.loginForm.value.username,this.loginForm.value.password);
+    this.auth.login(this.loginForm.value.username,this.loginForm.value.password)
+    .subscribe((res)=>{
+      console.log("Logged in",res);
+    });
   }
 
 }
