@@ -13,10 +13,6 @@ export class BackendAPIService {
     private http: HttpClient
   ) { }
 
-  getTest() {
-    return this.http.get(`${ROOT_URL}/hello`);
-  }
-
   getCV() {
     return this.http.get(`${ROOT_URL}/cv`);
   }
