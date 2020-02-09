@@ -13,6 +13,11 @@ export class AuthService {
   constructor(
     private api: BackendAPIService,
     private router: Router) { }
+  
+  
+  isAuthenticated(){
+    this.getAccessToken();
+  }
 
   login(username: string, password: string) {
     return this.api.login(username, password).pipe(
@@ -27,7 +32,6 @@ export class AuthService {
 
   logout() {
     this.removeSession();
-
     this.router.navigateByUrl('/login');
   }
 
