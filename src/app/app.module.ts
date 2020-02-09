@@ -13,6 +13,9 @@ import {
   MatCardModule,
   MatFormFieldModule,
 } from '@angular/material';
+
+import { JwtModule } from '@auth0/angular-jwt';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,15 +23,18 @@ import { AppComponent } from './app.component';
 
 // Angular HTTP Import
 import { HttpClientModule } from '@angular/common/http';
+
 import { LoginPageComponent } from './pages/public/login-page/login-page.component';
 import { HomePageComponent } from './pages/public/home-page/home-page.component';
+
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
     MatFormFieldModule,
 
     HttpClientModule,
-
+    JwtModule.forRoot({
+      // config:{
+      //   tokenGetter: 
+      // }
+    })
   ],
   providers: [
     TokenInterceptorService
