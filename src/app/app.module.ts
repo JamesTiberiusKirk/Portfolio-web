@@ -5,16 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Material inports
-import {
-  MatInputModule,
-  MatButtonModule,
-  MatSelectModule,
-  MatIconModule,
-  MatCardModule,
-  MatFormFieldModule,
-} from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { JwtModule } from '@auth0/angular-jwt';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,24 +23,33 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginPageComponent } from './pages/public/login-page/login-page.component';
 import { HomePageComponent } from './pages/public/home-page/home-page.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
-import { AuthService } from './services/auth/auth.service';
+
+// import { JwtModule } from '@auth0/angular-jwt';
+// import { AuthService } from './services/auth/auth.service';
+
+// function tokenGetter(){
+//   let auth: AuthService;
+//   return auth.getAccessToken();
+// }
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HomePageComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    
+
     FormsModule,
     ReactiveFormsModule,
-    
+
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -52,11 +58,11 @@ import { AuthService } from './services/auth/auth.service';
     MatFormFieldModule,
 
     HttpClientModule,
-    JwtModule.forRoot({
-      // config:{
-      //   tokenGetter: 
-      // }
-    })
+    // JwtModule.forRoot({
+    //   config:{
+    //     tokenGetter: () => {return localStorage.getItem('access-token')}
+    //   }
+    // })
   ],
   providers: [
     TokenInterceptorService
