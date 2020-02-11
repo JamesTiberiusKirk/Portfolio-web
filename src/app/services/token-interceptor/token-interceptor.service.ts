@@ -30,12 +30,11 @@ export class TokenInterceptorService implements HttpInterceptor {
   }
 
   addAccessTokenHeader(req: HttpRequest<any>) {
-    let token = this.auth.getAccessToken();
-
-    if (token) {
+    let user = this.auth.getCurrentUser();
+    if (user) {
       return req.clone({
         setHeaders: {
-          'x-access-token': token
+          'x-access-token': user.accessToken
         }
       });
     }
