@@ -4,62 +4,61 @@ import { shareReplay, tap } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 
 import { BackendAPIService } from '../backendAPI/backend-api.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+import { User } from '../../models/index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUser: BehaviorSubject<User>;
+  public authState: Observable<User>;
 
   constructor(
     private api: BackendAPIService,
-    private router: Router) { }
+    private router: Router,
+    ) { 
+      
+      this.currentUser = new BehaviorSubject<User>(JSON.parse(this.getSession()));
+      this.authState = this.currentUser.asObservable();
+    }
   
-  
-  isAuthenticated(){
-    this.getAccessToken();
+  public getCurrentUser(){
+    return this.currentUser.value;
   }
 
   login(username: string, password: string) {
     return this.api.login(username, password).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-        this.setSession(res.body._id,
-          res.headers.get('x-access-token'),
-          res.headers.get('x-refresh-token'));
+      
+        let user = new User;
+        user.id = res.body._id;
+        user.accessToken = res.headers.get('x-access-token');
+        user.refreshToken = res.headers.get('x-refresh-token');
+        
+        this.setSession(user);
+        this.currentUser.next(user);
+        return user;
       })
     );
   }
 
   logout() {
     this.removeSession();
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 
-  getAccessToken() {
-    return localStorage.getItem('access-token');
+  getSession(){
+    return localStorage.getItem('current-user');
   }
 
-  getRefreshToken(){
-    return localStorage.getItem('refresh-token');
-  }
-
-  setAccessToken(accessToken) {
-    localStorage.setItem('access-token',accessToken);
-  }
-
-  setRefreshToken(accessToken) {
-    localStorage.setItem('refresh-token',accessToken);
-  }
-
-  private setSession(userId: string, accessToken: string, refreshToken: string) {
-    localStorage.setItem('user-id', userId);
-    localStorage.setItem('access-token', accessToken);
-    localStorage.setItem('refresh-token', refreshToken);
+  private setSession(user: User) {
+    localStorage.setItem('current-user', JSON.stringify(user));
   }
 
   private removeSession() {
-    localStorage.removeItem('user-id');
-    localStorage.removeItem('access-token');
-    localStorage.setremoveItemItem('refresh-token');
+    localStorage.removeItem('current-user');
   }
 }
