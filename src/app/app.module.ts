@@ -26,6 +26,7 @@ import { HomePageComponent } from './pages/public/home-page/home-page.component'
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+import { CvListComponent } from './pages/admin/cv_list/cv-list/cv-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
     LoginPageComponent,
     HomePageComponent,
     DashboardComponent,
+    CvListComponent,
   ],
   imports: [
     BrowserModule,
