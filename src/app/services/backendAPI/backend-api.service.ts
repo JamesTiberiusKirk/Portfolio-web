@@ -14,7 +14,11 @@ export class BackendAPIService {
     private http: HttpClient
   ) { }
 
-  getCV() {
+  getAllCvs() {
+    return this.http.get(`${ROOT_URL}/admin/cv/all`);
+  }
+
+  getCv() {
     return this.http.get(`${ROOT_URL}/cv`);
   }
 
