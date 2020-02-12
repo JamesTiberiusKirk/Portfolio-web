@@ -19,14 +19,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Angular HTTP Import
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginPageComponent } from './pages/public/login-page/login-page.component';
 import { HomePageComponent } from './pages/public/home-page/home-page.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
-import { CvListComponent } from './pages/admin/cv_list/cv-list/cv-list.component';
+import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { CvListComponent } from './pages/admin/cv_list/cv-list/cv-list.component
     HttpClientModule,
   ],
   providers: [
-    TokenInterceptorService
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService , multi: true }
   ],
   bootstrap: [AppComponent]
 })
