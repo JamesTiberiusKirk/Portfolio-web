@@ -70,7 +70,7 @@ export class AuthService {
   }
 
   private removeSession() {
-    this.currentUser.unsubscribe();
+    this.currentUser.next(null);
     localStorage.removeItem('current-user');
   }
 }
