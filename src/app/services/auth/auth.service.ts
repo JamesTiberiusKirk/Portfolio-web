@@ -39,10 +39,20 @@ export class AuthService {
         user.refreshToken = res.headers.get('x-refresh-token');
         
         this.setSession(user);
-        this.currentUser.next(user);
         return user;
       })
     );
+  }
+
+  getNewAccessToken(){
+    let user = this.getCurrentUser()
+    let id = user.id;
+    let refreshToken = user.refreshToken;
+    this.api.refreshAccessToken(id, refreshToken)
+    .pipe(tap((res: HttpResponse<any>)=>{
+      user.accessToken = res.headers.get('x-access-token');
+      this.setSession(user);
+    }))
   }
 
   logout() {
@@ -55,10 +65,12 @@ export class AuthService {
   }
 
   private setSession(user: User) {
+    this.currentUser.next(user);
     localStorage.setItem('current-user', JSON.stringify(user));
   }
 
   private removeSession() {
+    this.currentUser.unsubscribe();
     localStorage.removeItem('current-user');
   }
 }

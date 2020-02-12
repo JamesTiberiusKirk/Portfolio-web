@@ -27,14 +27,6 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 
-// import { JwtModule } from '@auth0/angular-jwt';
-// import { AuthService } from './services/auth/auth.service';
-
-// function tokenGetter(){
-//   let auth: AuthService;
-//   return auth.getAccessToken();
-// }
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,11 +50,6 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
     MatFormFieldModule,
 
     HttpClientModule,
-    // JwtModule.forRoot({
-    //   config:{
-    //     tokenGetter: () => {return localStorage.getItem('access-token')}
-    //   }
-    // })
   ],
   providers: [
     TokenInterceptorService
