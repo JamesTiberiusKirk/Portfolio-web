@@ -15,18 +15,15 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     let request = this.addAccessTokenHeader(req);
 
-
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-
         if (error.status == 401){
           this.auth.logout();
         }
-
         console.log(error);
         return throwError(error)
       })
-    )
+    );
   }
 
   addAccessTokenHeader(req: HttpRequest<any>) {
