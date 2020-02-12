@@ -8,7 +8,7 @@ import { Cv } from 'src/app/models/index';
   styleUrls: ['./cv-list.component.scss']
 })
 export class CvListComponent implements OnInit {
-  data: Cv;
+  cvs: Cv;
 
   constructor(private api: BackendAPIService) { }
 
@@ -19,6 +19,7 @@ export class CvListComponent implements OnInit {
   getCvs() {
     this.api.getAllCvs().subscribe((data: Cv) => {
       console.log(data);
+      this.cvs = data;
     })
   }
 

@@ -1,1 +1,6 @@
-<p>cv-list works!</p>
+<div>
+   <h1>CVs</h1> 
+    <mat-list *ngFor="let cv of cvs; let i = index">
+        <mat-list-item> {{i+1}} {{cv.name}} </mat-list-item>
+    </mat-list>
+</div>
