@@ -27,7 +27,6 @@ export class LoginPageComponent implements OnInit {
   onBtnLoginClick() {
     this.auth.login(this.loginForm.value.username,this.loginForm.value.password)
     .subscribe((res)=>{
-      console.log("Logged in",res);
       this.router.navigate(['/admin']);
     });
   }
