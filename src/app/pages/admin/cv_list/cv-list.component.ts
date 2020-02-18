@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { BackendAPIService } from 'src/app/services/backendAPI/backend-api.service';
 import { Cv } from 'src/app/models/index';
 
@@ -8,7 +8,8 @@ import { Cv } from 'src/app/models/index';
   styleUrls: ['./cv-list.component.scss']
 })
 export class CvListComponent implements OnInit {
-  cvs: Cv;
+  cvs: Cv[];
+  @Output() selectedCv: Cv;
 
   constructor(private api: BackendAPIService) { }
 
@@ -16,10 +17,15 @@ export class CvListComponent implements OnInit {
     this.getCvs();
   }
 
+  updateBtn(){
+    console.log(this.selectedCv)
+  }
+
   getCvs() {
-    this.api.getAllCvs().subscribe((data: Cv) => {
+    this.api.getAllCvs().subscribe((data: Cv[]) => {
       console.log(data);
       this.cvs = data;
+      // this.selectedCv = this.cvs[0];
     })
   }
 

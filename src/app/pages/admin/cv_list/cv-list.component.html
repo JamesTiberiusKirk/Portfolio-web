@@ -1,6 +1,18 @@
-<div>
-   <h1>CVs</h1> 
-    <mat-list *ngFor="let cv of cvs; let i = index">
-        <mat-list-item> {{i+1}} {{cv.name}} </mat-list-item>
-    </mat-list>
+<div class="container">
+    <mat-card>
+        <mat-card-title>Available CVs</mat-card-title>
+        <mat-card-content>
+            <mat-radio-group [(ngModel)]="selectedCv">
+                <mat-list *ngFor="let cv of cvs; let i = index">
+                    <mat-list-item>
+                        <mat-radio-button [value]="cv">
+                        </mat-radio-button>
+                        {{i+1}} - {{(cv.bio.length>40)? (cv.bio | slice:0:40)+'...':(str) }} 
+                        <button mat-button class="editBtn">Edit</button>
+                    </mat-list-item>
+                </mat-list>
+                <button mat-button (click)="updateBtn()">Update</button>
+            </mat-radio-group>
+        </mat-card-content>
+    </mat-card>
 </div>
