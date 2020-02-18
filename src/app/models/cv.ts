@@ -12,18 +12,23 @@ export class Qualifications {
     grade: string;
 }
 
+export class Exp {
+    languages: Languages[];
+    description: string;
+    lang_type: string
+}
+
+export class Link {
+    site: string;
+    link: string;
+}
+
+
 export class Cv {
     _id: string;
     name: string;
     bio: string;
-    exp: {
-        languages: Languages[];
-        description: string;
-        lang_type: string
-    };
+    exp: Exp[];
     qualifications: Qualifications[];
-    links: [{
-        site: string;
-        link: string;
-    }];
+    links: Link[];
 }
