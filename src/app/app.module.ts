@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +29,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
+import { CvEditorComponent } from './pages/admin/cv-editor/cv-editor.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
     HomePageComponent,
     DashboardComponent,
     CvListComponent,
+    CvEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
     MatCardModule,
     MatFormFieldModule,
     MatListModule,
+    MatRadioModule,
 
     HttpClientModule,
   ],
