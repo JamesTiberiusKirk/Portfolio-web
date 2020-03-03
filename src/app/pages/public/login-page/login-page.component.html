@@ -1,18 +1,36 @@
-<div class="center">
-    <mat-card class="login-form">
-        <mat-card-title>Login</mat-card-title>
-        <mat-card-content>
-            <form [formGroup]="loginForm">
-                <mat-form-field>
-                    <input matInput placeholder="Username" formControlName="username">
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Password" formControlName="password">
-                </mat-form-field>
-                <br>
-                <button mat-raised-button (click)='onBtnLoginClick()'>Login</button>
-            </form>
-        </mat-card-content>
-    </mat-card>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-4 align-self-start"></div>
+        <div class="col-4 align-self-center">
+
+            <div class="card mb1">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Login</h5>
+                    <form [formGroup]="loginForm">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Username</span>
+                            </div>
+                            <input formControlName="username">
+                        </div>
+
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Password</span>
+                            </div>
+                            <input type="password" formControlName="password">
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button class="btn btn-primary" (click)='onBtnLoginClick()'>Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4  align-self-end"></div>
+    </div>
 </div>

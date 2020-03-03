@@ -1,4 +1,19 @@
-<p>Admin dashboard works!</p>
-<button mat-raised-button (click)="logoutBtn()">Logout</button>
-<app-cv-list class="center"></app-cv-list>
-<app-cv-editor class="center"></app-cv-editor>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Admin</h1>
+        </div>
+        <div class="col-1 align-self-end">
+            <button class="btn btn-primary text-center" (click)="logoutBtn()">Logout</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 align-self-start">
+            <app-cv-list></app-cv-list>
+        </div>
+        <div class="col-5">
+            <app-cv-editor></app-cv-editor>
+        </div>
+    </div>
+
+</div>

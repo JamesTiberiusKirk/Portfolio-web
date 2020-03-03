@@ -1,18 +1,16 @@
-<div class="container">
-    <mat-card>
-        <mat-card-title>Available CVs</mat-card-title>
-        <mat-card-content>
-            <mat-radio-group [(ngModel)]="selectedCv">
-                <mat-list *ngFor="let cv of cvs; let i = index">
-                    <mat-list-item>
-                        <mat-radio-button [value]="cv">
-                        </mat-radio-button>
-                        {{i+1}} - {{(cv.bio.length>40)? (cv.bio | slice:0:40)+'...':(str) }} 
-                        <button mat-button class="editBtn">Edit</button>
-                    </mat-list-item>
-                </mat-list>
-                <button mat-button (click)="updateBtn()">Update</button>
-            </mat-radio-group>
-        </mat-card-content>
-    </mat-card>
+<div class="card">
+    <div class="card-body">
+
+        <div class="card-title">Available CVs</div>
+        <div class="form-check" [(ngModel)]="selectedCv">
+            <ul class="list-group" *ngFor="let cv of cvs; let i = index">
+                <li class="list-group-item">
+                    <input class="form-check-input" type="radio" [value]="cv">
+                    {{i+1}} - {{(cv.bio.length>40)? (cv.bio | slice:0:40)+'...':(str) }}
+                    <button class="btn btn-primary editBtn">Edit</button>
+                </li>
+            </ul>
+            <button class="btn btn-primary" (click)="updateBtn()">Update</button>
+        </div>
+    </div>
 </div>

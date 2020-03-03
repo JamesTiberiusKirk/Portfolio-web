@@ -16,16 +16,24 @@ export class CvEditorComponent implements OnInit {
     this.cvForm = this.fb.group({
       name: '',
       bio: '',
-      exp: this.fb.array([]),
+      exps: this.fb.array([]),
       qualifications: this.fb.array([]),
       links: this.fb.array([])
     });
   }
 
   get expForms() {
-    return this.cvForm.get('exp') as FormArray;
+    return this.cvForm.get('exps') as FormArray;
   }
 
+  get languageForms(){
+    return this.expForms.get('languages') as FormArray;
+  }
+
+  get frameworkForms(){
+    return this.languageForms.get('frameworks') as FormArray;
+  }
+  
   get qualificationForms() {
     return this.cvForm.get('qualifications') as FormArray;
   }
@@ -34,13 +42,32 @@ export class CvEditorComponent implements OnInit {
     return this.cvForm.get('links') as FormArray;
   }
 
+
   addExp() {
-    let exp = this.fb.group({
-      language: this.fb.array([]),
+    const exp = this.fb.group({
+      languages: this.fb.array([]),
       description: '',
-      lang_type: ''
+      lang_type: '' 
     });
     this.expForms.push(exp);
+    console.log('adding exp');
+    // console.log(exp)
+    console.log(this.expForms.controls)
+  }
+
+  addLanguage(){
+    let language = this.fb.group({
+      language: '',
+      frameworks: this.fb.array([])
+    });
+    this.languageForms.push(language);
+  }
+
+  addFramework(){
+    let framework = this.fb.group({
+      framework: ''  
+    });
+    this.frameworkForms.push(framework);
   }
 
   addQualification() {
@@ -62,8 +89,18 @@ export class CvEditorComponent implements OnInit {
     this.linkForms.push(link);
   }
 
+
+
   deleteExp(i) {
     this.expForms.removeAt(i);
+  }
+
+  deleteLanguage(i){
+    this.languageForms.removeAt(i);
+  }
+
+  deleteFramework(i){
+    this.frameworkForms.removeAt(i);
   }
 
   deleteQualification(i) {

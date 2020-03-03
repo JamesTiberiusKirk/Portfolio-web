@@ -23,7 +23,6 @@ export class Link {
     link: string;
 }
 
-
 export class Cv {
     _id: string;
     name: string;
