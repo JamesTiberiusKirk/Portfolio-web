@@ -1,0 +1,42 @@
+<form [formGroup]="expForm" class="form-gorup">
+    <h5>Experience</h5>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+        </div>
+        <input class="form-control" type="text" formControlName="description">
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Language type</span>
+        </div>
+        <input class="form-control" type="text" formControlName="lang_type">
+    </div>
+    <div *ngFor="let lang of languageForms.controls; let i = index">
+        <hr>
+        <h6>Language {{i+1}}</h6>
+        <div [formGroup]="lang">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Language</span>
+                </div>
+                <input class="form-control" type="text" formControlName="language">
+                <div class="input-group-postpend">
+                    <button class="btn" (click)="deleteLanguages(i)">Delete</button>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Frameworks</span>
+                </div>
+                <input class="form-control" type="text" formControlName="frameworks">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <button class="btn" (click)="addLanguages()">Add Language</button>
+        </div>
+    </div>
+</form>

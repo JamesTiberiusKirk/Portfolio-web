@@ -19,6 +19,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
 import { CvEditorComponent } from './pages/admin/cv-editor/cv-editor.component';
+import { ExpEditorComponent } from './pages/admin/exp-editor/exp-editor.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CvEditorComponent } from './pages/admin/cv-editor/cv-editor.component';
     DashboardComponent,
     CvListComponent,
     CvEditorComponent,
+    ExpEditorComponent,
   ],
   imports: [
     BrowserModule,

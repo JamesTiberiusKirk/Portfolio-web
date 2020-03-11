@@ -1,7 +1,6 @@
 export class Languages {
     language: string;
-    frameworks: string[];
-
+    frameworks: string;
 }
 
 export class Qualifications {

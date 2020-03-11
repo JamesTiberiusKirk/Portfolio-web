@@ -2,58 +2,43 @@
     <div class="card-body">
         <h4 class="card-title">Edit CVs</h4>
         <form [formGroup]="cvForm">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Name</span>
-                </div>
-                <input [placeholder]="name" formControlName="name">
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Bio</span>
-                </div>
-                <input matInput [placeholder]="bio" formControlName="bio">
-            </div>
-
-            <div *ngFor="let exp of expForms.controls; let i = index" [formGroupName]="i">
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Language Desctiption</span>
-                    </div>
-                    <input [value]="description" formControlName="description">
-                </div>
-
-                <div class="input-group">
-                    <div class="inpu-group-prepend">
-                        <span class="input-group-text">Language Type</span>
-                    </div>
-                    <input [value]="lang_type" formControlName="lang_type">
-                </div>
-
-
-                <div *ngFor="let language of languageForms.controls; let j = index" [formGroupName]="j">
-
+            <div class="row">
+                <div class="col">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Language</span>
+                            <span class="input-group-text">Name</span>
                         </div>
-                        <input formControlName="language.language">
+                        <input class="form-control" type="text" formControlName="name">
                     </div>
                 </div>
-
-                <br>
-                <button class="btn btn-primary" (click)="addLanguage()">Add Language</button>
-                <button class="btn btn-primary" (click)="deleteLanguage()">Remove Language</button>
-
             </div>
 
-            <br>
-            <button class="btn btn-primary" (click)="addExp()">Add Experience</button>
-            <button class="btn btn-primary" (click)="deleteExp()">Remvove Experience</button>
-
-            <br>
-            <button class="btn btn-primary" (click)="onBtnLoginClick()">Submit</button>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Bio</span>
+                        </div>
+                        <input class="form-control" formControlName="bio">
+                    </div>
+                </div>
+            </div>
         </form>
+
+        <hr>
+        <div class="" *ngFor="let exp of exps">
+            <app-exp-editor #exp [expData]="exp" class="card-body"></app-exp-editor>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn" (click)="addExp()">Add Experience</button>
+            </div>
+            <div class="col">
+                <button class="btn" (click)="deleteExp()">Remvove Experience</button>
+            </div>
+        </div>
+        <hr>
+        <button class="btn" (click)="onBtnLoginClick()">Submit</button>
     </div>
 </div>
