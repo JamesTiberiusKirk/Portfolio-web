@@ -1,19 +1,23 @@
-<div class="container">
+<div class="p-3">
     <div class="row">
-        <div class="col text-center">
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
             <h1>Admin</h1>
         </div>
-        <div class="col-1 align-self-end">
+        <div class="col-1 float-right">
             <button class="btn btn-primary text-center" (click)="logoutBtn()">Logout</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-3 align-self-start">
-            <!-- <app-cv-list></app-cv-list> -->
+        <div class="col-3">
+            <app-cv-list [cvList]="cvList" [(cv)]="currentCv"></app-cv-list>
+            <br>
+            <div *ngIf="currentCv">    
+                <button class="btn btn-primary" (click)="btnSave()">Save MarkDown</button>
+            </div>
         </div>
-        <div class="col-5">
-            <app-cv-editor></app-cv-editor>
+        <div class="col-9" *ngIf="currentCv">
+            <app-cv-editor [(cv)]="currentCv.markdown"></app-cv-editor>
         </div>
     </div>
-
 </div>

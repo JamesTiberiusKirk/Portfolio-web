@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { BackendAPIService } from 'src/app/services/backendAPI/backend-api.service';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Cv } from 'src/app/models/index';
 
 @Component({
@@ -8,25 +7,27 @@ import { Cv } from 'src/app/models/index';
   styleUrls: ['./cv-list.component.scss']
 })
 export class CvListComponent implements OnInit {
-  cvs: Cv[];
-  @Output() selectedCv: Cv;
+  @Input() cvList: Array<Cv>
+  @Output() cvChange: EventEmitter<Cv> = new EventEmitter<Cv>()
+  cvCurr:Cv
 
-  constructor(private api: BackendAPIService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getCvs();
   }
 
-  updateBtn(){
-    console.log(this.selectedCv)
+  btnClick(i){
+    this.cv = this.cvList[i]
   }
 
-  getCvs() {
-    this.api.getAllCvs().subscribe((data: Cv[]) => {
-      console.log(data);
-      this.cvs = data;
-      // this.selectedCv = this.cvs[0];
-    })
+  @Input()
+  get cv(){
+    return this.cvCurr;
+  }
+
+  set cv(cv){
+    this.cvCurr = cv
+    this.cvChange.emit(this.cvCurr);
   }
 
 }

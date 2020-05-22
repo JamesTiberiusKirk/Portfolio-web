@@ -1,16 +1,12 @@
-<div class="card">
-    <div class="card-body">
-
-        <div class="card-title">Available CVs</div>
-        <div class="form-check" [(ngModel)]="selectedCv">
-            <ul class="list-group" *ngFor="let cv of cvs; let i = index">
-                <li class="list-group-item">
-                    <input class="form-check-input" type="radio" [value]="cv">
-                    {{i+1}} - {{(cv.bio.length>40)? (cv.bio | slice:0:40)+'...':(str) }}
-                    <button class="btn btn-primary editBtn">Edit</button>
-                </li>
-            </ul>
-            <button class="btn btn-primary" (click)="updateBtn()">Update</button>
-        </div>
+<h2>Available CVs</h2>
+<div class="input-group" *ngFor="let cv of cvList; let i = index">
+    <div class="input-group-prepend">
+        <!--<div class="input-group-text">
+            <input type="radio" id="cvLstRadio{{i}}" name="cvRaidos">
+        </div>-->
     </div>
+    <label class="form-control" for="cvLstRadio{i}}">
+        {{i+1}} - {{(cv.markdown.length>38) ? (cv.markdown | slice:0:38)+'...':(str) }}
+    </label>
+    <button (click)="btnClick(i)" class="btn btn-primary float-right">Edit</button>
 </div>

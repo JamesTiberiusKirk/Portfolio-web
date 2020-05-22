@@ -19,7 +19,13 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 import { CvListComponent } from './pages/admin/cv_list/cv-list.component';
 import { CvEditorComponent } from './pages/admin/cv-editor/cv-editor.component';
-import { ExpEditorComponent } from './pages/admin/exp-editor/exp-editor.component';
+
+// Markdown viewer 
+import { MarkdownModule } from 'ngx-markdown';
+
+// Markdown editor
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { CvDisplayComponent } from './pages/public/cv-display/cv-display.component';
 
 @NgModule({
   declarations: [
@@ -29,16 +35,16 @@ import { ExpEditorComponent } from './pages/admin/exp-editor/exp-editor.componen
     DashboardComponent,
     CvListComponent,
     CvEditorComponent,
-    ExpEditorComponent,
+    CvDisplayComponent,
   ],
   imports: [
+    MarkdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     FormsModule,
     ReactiveFormsModule,
-
+    LMarkdownEditorModule,
     HttpClientModule,
   ],
   providers: [

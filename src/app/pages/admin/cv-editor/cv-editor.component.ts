@@ -1,7 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { Cv, Exp } from 'src/app/models';
-import { ExpEditorComponent } from '../exp-editor/exp-editor.component';
+import { Component, OnInit, AfterViewInit, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cv-editor',
@@ -9,25 +7,29 @@ import { ExpEditorComponent } from '../exp-editor/exp-editor.component';
   styleUrls: ['./cv-editor.component.scss']
 })
 export class CvEditorComponent implements AfterViewInit {
-  @Input() cvForm: FormGroup;
-  exps: Exp[];
+  cvData: string;
+  @Output() cvChange: EventEmitter<string> = new EventEmitter<string>();
 
-  // @ViewChild(ExpEditorComponent) expChildCompoents;
-  @ViewChildren('exp') expChildrenComp:QueryList<ExpEditorComponent>;
+  markdownEditorOptions
 
-  constructor(
-  ) { }
+  constructor() {
+    this.markdownEditorOptions = {
+      showPreviewPanel: false,
+      showBorder: false,
+      resizable: true
+    }
+  }
 
   ngAfterViewInit(): void {
-    this.cvForm = new FormGroup({
-      name: new FormControl(),
-      bio: new FormControl(),
-    });
   }
 
-  addExp() {
-    console.log(this.expChildrenComp.toArray());
+  @Input()
+  get cv() {
+    return this.cvData;
   }
 
-
+  set cv(val: string) {
+    this.cvData = val;
+    this.cvChange.emit(this.cvData);
+  }
 }

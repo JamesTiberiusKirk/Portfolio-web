@@ -20,7 +20,6 @@ export class TokenInterceptorService implements HttpInterceptor {
         if (error.status == 401){
           this.auth.logout();
         }
-        console.log(error);
         return throwError(error)
       })
     );
@@ -35,7 +34,6 @@ export class TokenInterceptorService implements HttpInterceptor {
         }
       });
     }
-
     return req
   }
 }

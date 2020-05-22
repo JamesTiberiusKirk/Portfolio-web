@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpEditorComponent } from './exp-editor.component';
+import { CvDisplayComponent } from './cv-display.component';
 
-describe('ExpEditorComponent', () => {
-  let component: ExpEditorComponent;
-  let fixture: ComponentFixture<ExpEditorComponent>;
+describe('CvDisplayComponent', () => {
+  let component: CvDisplayComponent;
+  let fixture: ComponentFixture<CvDisplayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpEditorComponent ]
+      declarations: [ CvDisplayComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExpEditorComponent);
+    fixture = TestBed.createComponent(CvDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
