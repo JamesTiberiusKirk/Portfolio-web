@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-
+  wrongPass: boolean;  
   loginForm: FormGroup;
 
   constructor(
@@ -28,6 +28,8 @@ export class LoginPageComponent implements OnInit {
     this.auth.login(this.loginForm.value.username,this.loginForm.value.password)
     .subscribe((res)=>{
       this.router.navigate(['/admin']);
+    },err=>{
+      this.wrongPass = true;
     });
   }
 

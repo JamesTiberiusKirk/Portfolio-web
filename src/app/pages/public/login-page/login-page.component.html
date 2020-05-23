@@ -19,9 +19,13 @@
                         <br>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Password</span>
+                                <span class="input-group-text is-invalid">Password</span>
                             </div>
                             <input type="password" formControlName="password">
+                        </div>
+                        <br>
+                        <div class="alert alert-danger fade show" *ngIf="wrongPass">
+                            <strong>Error!</strong> Wrong Password
                         </div>
                         <br>
                         <div class="text-center">
