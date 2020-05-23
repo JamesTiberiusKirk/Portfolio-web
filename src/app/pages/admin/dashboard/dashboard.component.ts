@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
 
   cvList: Array<Cv>
   currentCv: Cv
+  saved: boolean = false;
+  error: string;
 
   constructor(private auth: AuthService, private api: BackendAPIService) {
     this.api.getAllCvs().then(res => {
@@ -32,8 +34,9 @@ export class DashboardComponent implements OnInit {
     this.api.updateCv(this.currentCv)
       .then(res => {
         console.log("Succesfully updated");
-        // console.log(res);
+        this.saved = true;
       }).catch(err => {
+        this.error = err
         console.error(err)
       });
   }
