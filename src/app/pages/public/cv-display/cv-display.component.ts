@@ -12,7 +12,7 @@ export class CvDisplayComponent implements OnInit {
   constructor(private api: BackendAPIService) {
     api.getCv()
     .then((data) => {
-      this.cv = data[0];
+      this.cv = data;
     }).catch((err) => {
       console.error(err)
     })
