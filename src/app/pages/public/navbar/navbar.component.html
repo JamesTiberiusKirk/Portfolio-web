@@ -14,8 +14,17 @@
                 <a class="nav-link" routerLink="/projects">Projects</a>
             </li>
         </ul>
+
+        
+
+        <ul class="inline navbar-nav my-2 my-lg-0">
+            <li class="nav-item" [ngClass]="{'active' : current == 'admin'}">
+                <a class="nav-link" routerLink="/admin">Admin</a>
+            </li>
+        </ul>
         <div *ngIf="isLoggedIn" class="inline my-2 my-lg-0">
-            <button (click)="logout()" class="btn btn-primary">Logout</button>
+
+            <button (click)="logout()" type="button" class="inline btn btn-light">Logout</button>
         </div>
     </div>
 </nav>

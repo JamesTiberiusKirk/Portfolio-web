@@ -6,7 +6,7 @@
         </div>-->
     </div>
     <label class="form-control" for="cvLstRadio{i}}">
-        {{i+1}} - {{(cv.markdown.length>38) ? (cv.markdown | slice:0:38)+'...':(str) }}
+        {{i+1}} - {{(cv.markdown.length>38) ? (cv.markdown | slice:0:38)+'...':('nothing') }}
     </label>
     <button (click)="btnClick(i)" class="btn btn-primary float-right">Edit</button>
 </div>
