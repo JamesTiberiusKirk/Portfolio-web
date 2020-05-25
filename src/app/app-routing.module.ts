@@ -10,8 +10,8 @@ import { ProjectsComponent } from './pages/public/projects/projects.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent },
+  // { path: '/', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'admin', canActivate:[ AuthGuard ], component: DashboardComponent},
   { path: 'projects', component: ProjectsComponent }

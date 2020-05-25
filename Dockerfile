@@ -1,14 +1,19 @@
-FROM node:latest as node
+FROM node:alpine as builder
+RUN apk update && apk add --no-cache make git
 
-WORKDIR /app
+#WORKDIR /app
+COPY package.json package-lock.json /app/
+RUN cd /app && npm install
 
-COPY . . 
-RUN npm install ngx-markdown-editor tslint@^5.0.0 ace-builds
-RUN npm install
-RUN npm install -g @angular/cli
-
-ENV PATH /app/node_modules/.bin:$PATH
-RUN ng build
+COPY .  /app
+RUN cd /app && npm run build
 
 FROM nginx:alpine
-copy --from=node /app/dist/Portfolio /usr/share/nginx/html
+
+RUN rm -rf /usr/share/nginx/html/* 
+COPY ./nginx-conf/portfolio.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=builder /app/dist/Portfolio /usr/share/nginx/html
+#COPY ./dist/Portfolio/ /usr/share/nginx/html
+
+EXPOSE 80
