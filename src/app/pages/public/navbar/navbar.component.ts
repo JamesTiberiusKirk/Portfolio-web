@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class NavbarComponent implements OnInit {
   @Input() current: string;
   isLoggedIn: boolean = false;
+  navbarOpen: boolean = false;
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -17,5 +18,9 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.auth.logout();
+  }
+
+  toggleNavBar(){
+    this.navbarOpen = !this.navbarOpen;
   }
 }
