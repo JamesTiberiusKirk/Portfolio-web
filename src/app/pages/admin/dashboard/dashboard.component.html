@@ -1,11 +1,11 @@
 <app-navbar [current]="'admin'"></app-navbar>
-<div class="p-3">
+<div class="jumbotron">
     <div class="row">
-        <div class="col-lg-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-11">
             <app-cv-list [cvList]="cvList" [(cv)]="currentCv"></app-cv-list>
             <br>
             <div *ngIf="currentCv">
-                <button class="btn btn-primary" (click)="btnSave()">Save MarkDown</button>
+                <button class="btn btn-primary col-sm-12" (click)="btnSave()">Save MarkDown</button>
                 <br>
                 <div class="alert alert-success alert-dismissible fade show" *ngIf="saved">
                     <strong>Success!</strong> Markdown saved successfully.
@@ -15,9 +15,10 @@
                     <strong>Error!</strong> A problem has been occurred while submitting the markdown.
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                 </div>
+                <br>
             </div>
         </div>
-        <div class="col-lg-9 col-sm-12" *ngIf="currentCv">
+        <div class="col-lg-9 col-sm-11" *ngIf="currentCv">
             <app-cv-editor [(cv)]="currentCv.markdown"></app-cv-editor>
         </div>
     </div>
