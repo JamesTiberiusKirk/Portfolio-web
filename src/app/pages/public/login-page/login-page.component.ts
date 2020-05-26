@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  wrongPass: boolean;  
+  wrongPass: boolean;
+  emptyCreds: boolean;
   loginForm: FormGroup;
 
   constructor(
@@ -25,11 +26,16 @@ export class LoginPageComponent implements OnInit {
   }
 
   onBtnLoginClick() {
+    if ((!this.loginForm.value.username) || (!this.loginForm.value.password)){
+      this.emptyCreds = true;
+      return;
+    }
     this.auth.login(this.loginForm.value.username,this.loginForm.value.password)
     .subscribe((res)=>{
       this.router.navigate(['/admin']);
     },err=>{
       this.wrongPass = true;
+      this.emptyCreds = false;
     });
   }
 

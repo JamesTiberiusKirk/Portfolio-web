@@ -8,12 +8,20 @@
             <form [formGroup]="loginForm" class="form-signin">
               <div class="form-label-group">
                 <input  formControlName="username" type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUsername">Username</label>
               </div>
+              <br>
 
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" required>
-                <label for="inputPassword">Password</label>
+              </div>
+              <br>
+
+              <div *ngIf="wrongPass" class="alert alert-danger">
+                <strong>Error!</strong> Wrong password.
+              </div>
+              
+              <div *ngIf="emptyCreds" class="alert alert-danger">
+                <strong>Error!</strong> Need to fill in credentials.
               </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)='onBtnLoginClick()' type="submit">Login in</button>
