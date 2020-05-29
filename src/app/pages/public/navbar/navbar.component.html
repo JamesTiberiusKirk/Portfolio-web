@@ -10,7 +10,7 @@
                 <a class="nav-link" routerLink="/">CV</a>
             </li>
             <li class="nav-item" [ngClass]="{'active' : current == 'projects'}">
-                <a class="nav-link" routerLink="/projects">Projects</a>
+                <a class="nav-link" href="https://github.com/JamesTiberiusKirk">Projects</a>
             </li>
         </ul>
 
@@ -18,9 +18,11 @@
             <li class="nav-item" [ngClass]="{'active' : current == 'admin'}">
                 <a class="nav-link" routerLink="/admin">Admin</a>
             </li>
+            <!-- <li class="nav-item"> -->
+                <!-- <a href="https://github.com/JamesTiberiusKirk/Portfolio-web" class="nav-link">Check Me on GitHub</a> -->
+            <!-- </li> -->
         </ul>
         <div *ngIf="isLoggedIn" class="inline my-2 my-lg-0">
-
             <button (click)="logout()" type="button" class="inline btn btn-light">Logout</button>
         </div>
     </div>
