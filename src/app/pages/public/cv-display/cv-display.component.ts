@@ -13,6 +13,9 @@ export class CvDisplayComponent implements OnInit {
     api.getCv()
     .then((data) => {
       this.cv = data;
+      if (!data){
+        this.cv = new Cv('# No CVs available');
+      }
     }).catch((err) => {
       console.error(err)
     })
