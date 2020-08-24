@@ -1,4 +1,5 @@
 <h2>Available CVs</h2>
+<div *ngIf="cvList.length == 0"> No CVs Available</div>
 <div class="input-group" *ngFor="let cv of cvList; let i = index">
     <div class="input-group-prepend">
         <!--<div class="input-group-text">
