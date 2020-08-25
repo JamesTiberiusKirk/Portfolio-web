@@ -10,7 +10,7 @@ import { Cv } from 'src/app/models';
 })
 export class DashboardComponent implements OnInit {
 
-  cvList: Array<Cv>
+  cvList: Cv[];
   currentCv: Cv
   saved: boolean = false;
   error: string;
@@ -18,6 +18,9 @@ export class DashboardComponent implements OnInit {
   constructor(private auth: AuthService, private api: BackendAPIService) {
     this.api.getAllCvs().then(res => {
       this.cvList = res;
+      if (this.cvList.length == 0) {
+        this.currentCv = new Cv('');
+      }
     }).catch(err => {
       console.error(err)
     });
@@ -31,13 +34,22 @@ export class DashboardComponent implements OnInit {
   }
 
   btnSave() {
-    this.api.updateCv(this.currentCv)
-      .then(res => {
-        console.log("Succesfully updated");
+    if (this.cvList.length == 0) {
+      this.api.newCv(this.currentCv.markdown)
+        .then((res) => {
+          this.saved = true;
+        }).catch((err) => {
+          console.error(err);
+        });
+    } else {
+      this.api.updateCv(this.currentCv)
+      .then((res) => {
+        console.log('Successfully updated');
         this.saved = true;
-      }).catch(err => {
+      }).catch((err) => {
         this.error = err
         console.error(err)
       });
+    }
   }
 }
