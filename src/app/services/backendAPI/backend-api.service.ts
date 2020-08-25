@@ -14,6 +14,17 @@ export class BackendAPIService {
     private http: HttpClient
   ) { }
 
+  newCv(markdown: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${ROOT_URL}/admin/cv`, { cv: { markdown } })
+        .subscribe((res) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   updateCv(updatedCv: Cv) {
     return new Promise((resolve, reject) => {
       this.http.patch(`${ROOT_URL}/admin/cv/update`, { cv: updatedCv })
