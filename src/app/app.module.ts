@@ -25,9 +25,12 @@ import { MarkdownModule } from 'ngx-markdown';
 
 // Markdown editor
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+
+
 import { CvDisplayComponent } from './pages/public/cv-display/cv-display.component';
 import { NavbarComponent } from './pages/public/navbar/navbar.component';
 import { ProjectsComponent } from './pages/public/projects/projects.component';
+import { AccountUpdateComponent } from './pages/admin/account-update/account-update.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { ProjectsComponent } from './pages/public/projects/projects.component';
     CvDisplayComponent,
     NavbarComponent,
     ProjectsComponent,
+    AccountUpdateComponent
   ],
   imports: [
     MarkdownModule.forRoot(),

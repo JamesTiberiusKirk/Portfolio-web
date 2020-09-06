@@ -1,0 +1,48 @@
+<app-navbar [current]="'admin'"></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Update Account Details</h5>
+                    <div class="">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input [(ngModel)]="usernameUpdate" type="checkbox">
+                                </div>
+                            </div>
+                            <input [(ngModel)]="username" type="text" placeholder="New Username" class="form-control" [disabled]="!usernameUpdate" >
+                        </div>
+
+                        <br>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input [(ngModel)]="passwordUpdate" type="checkbox">
+                                </div>
+                            </div>
+                            <input [(ngModel)]="password" type="password" placeholder="New Password" class="form-control" [disabled]="!passwordUpdate">
+                            <input [(ngModel)]="passwordRepeat" type="password" placeholder="Repeat Password" class="form-control" [disabled]="!passwordUpdate">
+                        </div>
+
+                        <br>
+
+                        <div *ngIf="wrongPass" class="alert alert-danger">
+                            <strong>Error!</strong> Wrong password.
+                        </div>
+
+                        <div *ngIf="emptyCreds" class="alert alert-danger">
+                            <strong>Error!</strong> Need to fill in credentials.
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)='onBtnUpdateClick()'
+                            type="submit">Update Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

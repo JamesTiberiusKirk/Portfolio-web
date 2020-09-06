@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Cv } from 'src/app/models/cv';
+
 
 const ROOT_URL = environment.server_config.host + environment.server_config.port
 
@@ -13,6 +14,23 @@ export class BackendAPIService {
   constructor(
     private http: HttpClient
   ) { }
+
+  updateUserDetails(id: number, update: object): Promise<object> {
+
+    let body = {
+      id,
+      update: update
+    }
+
+    return new Promise((resolve, reject) => {
+      this.http.patch(`${ROOT_URL}/admin/users/update`, body)
+        .subscribe((res) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    })
+  }
 
   newCv(markdown: string) {
     return new Promise((resolve, reject) => {
